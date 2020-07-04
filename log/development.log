@@ -1,0 +1,193 @@
+  [1m[35m (3.0ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (114.8ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" varchar NOT NULL PRIMARY KEY)[0m
+  [1m[35m (127.6ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" varchar NOT NULL PRIMARY KEY, "value" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreateProducts (20200702183638)
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.8ms)[0m  [1m[35mCREATE TABLE "products" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "title" varchar, "description" text, "image_url" varchar, "price" decimal(8,2), "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[36mprimary::SchemaMigration Create (0.4ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20200702183638"]]
+  [1m[35m (114.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.5ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.4ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["key", "environment"], ["value", "development"], ["created_at", "2020-07-02 19:04:19.458784"], ["updated_at", "2020-07-02 19:04:19.458784"]]
+  [1m[35m (108.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Started GET "/" for ::1 at 2020-07-02 22:08:18 +0300
+  [1m[35m (0.9ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Rails::WelcomeController#index as HTML
+  Rendering /home/yuriy/.rvm/gems/ruby-2.6.6/gems/railties-6.0.3.2/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /home/yuriy/.rvm/gems/ruby-2.6.6/gems/railties-6.0.3.2/lib/rails/templates/rails/welcome/index.html.erb (Duration: 38.9ms | Allocations: 471)
+Completed 200 OK in 98ms (Views: 68.6ms | ActiveRecord: 0.0ms | Allocations: 3032)
+
+
+Started GET "/products" for ::1 at 2020-07-02 22:08:31 +0300
+Processing by ProductsController#index as HTML
+  Rendering products/index.html.erb within layouts/application
+  [1m[36mProduct Load (0.3ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  ↳ app/views/products/index.html.erb:17
+  Rendered products/index.html.erb within layouts/application (Duration: 31.8ms | Allocations: 1585)
+[Webpacker] Compiling...
+[Webpacker] Compiled all packs in /home/yuriy/ruby_tutorial/test/agile_6/public/packs
+[Webpacker] Hash: 15d1bb7b54cf6326b9ba
+Version: webpack 4.43.0
+Time: 3400ms
+Built at: 2020-07-02 22:08:36
+                                     Asset       Size       Chunks                         Chunk Names
+    js/application-9afcbb5693aa87623e69.js    124 KiB  application  [emitted] [immutable]  application
+js/application-9afcbb5693aa87623e69.js.map    139 KiB  application  [emitted] [dev]        application
+                             manifest.json  364 bytes               [emitted]              
+Entrypoint application = js/application-9afcbb5693aa87623e69.js js/application-9afcbb5693aa87623e69.js.map
+[./app/javascript/channels sync recursive _channel\.js$] ./app/javascript/channels sync _channel\.js$ 160 bytes {application} [built]
+[./app/javascript/channels/index.js] 211 bytes {application} [built]
+[./app/javascript/packs/application.js] 749 bytes {application} [built]
+[./node_modules/webpack/buildin/module.js] (webpack)/buildin/module.js 552 bytes {application} [built]
+    + 3 hidden modules
+
+Completed 200 OK in 5597ms (Views: 5586.8ms | ActiveRecord: 2.2ms | Allocations: 23756)
+
+
+Started GET "/products/new" for ::1 at 2020-07-02 22:20:12 +0300
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Processing by ProductsController#new as HTML
+  Rendering products/new.html.erb within layouts/application
+  Rendered products/_form.html.erb (Duration: 131.9ms | Allocations: 8311)
+  Rendered products/new.html.erb within layouts/application (Duration: 135.0ms | Allocations: 8666)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 233ms (Views: 156.3ms | ActiveRecord: 4.9ms | Allocations: 18194)
+
+
+Started POST "/products" for ::1 at 2020-07-02 22:20:47 +0300
+Processing by ProductsController#create as HTML
+  Parameters: {"authenticity_token"=>"U+9MCOGm/ug7u2iQc+jCbi8tw3DjwqcfnrCLOic6reAyml8vqRNoZAkVlzFVP/ocCWgy5GlGNTjrfFDw9Z4NbA==", "product"=>{"title"=>"product1", "description"=>"lorem ipsum", "image_url"=>"kiril.jpg", "price"=>"36"}, "commit"=>"Create Product"}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/products_controller.rb:30:in `block in create'
+  [1m[36mProduct Create (0.6ms)[0m  [1m[32mINSERT INTO "products" ("title", "description", "image_url", "price", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["title", "product1"], ["description", "lorem ipsum"], ["image_url", "kiril.jpg"], ["price", 36.0], ["created_at", "2020-07-02 19:20:47.634346"], ["updated_at", "2020-07-02 19:20:47.634346"]]
+  ↳ app/controllers/products_controller.rb:30:in `block in create'
+  [1m[35m (288.6ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/products_controller.rb:30:in `block in create'
+Redirected to http://localhost:3000/products/1
+Completed 302 Found in 300ms (ActiveRecord: 289.3ms | Allocations: 4521)
+
+
+Started GET "/products/1" for ::1 at 2020-07-02 22:20:47 +0300
+Processing by ProductsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mProduct Load (0.5ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/products_controller.rb:67:in `set_product'
+  Rendering products/show.html.erb within layouts/application
+  Rendered products/show.html.erb within layouts/application (Duration: 1.2ms | Allocations: 317)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 18ms (Views: 9.8ms | ActiveRecord: 0.5ms | Allocations: 5186)
+
+
+Started GET "/products" for ::1 at 2020-07-02 22:21:29 +0300
+Processing by ProductsController#index as HTML
+  Rendering products/index.html.erb within layouts/application
+  [1m[36mProduct Load (0.4ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  ↳ app/views/products/index.html.erb:17
+  Rendered products/index.html.erb within layouts/application (Duration: 11.5ms | Allocations: 1107)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 50ms (Views: 46.0ms | ActiveRecord: 0.4ms | Allocations: 4973)
+
+
+Started GET "/products" for ::1 at 2020-07-02 22:36:52 +0300
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by ProductsController#index as HTML
+  Rendering products/index.html.erb within layouts/application
+  [1m[36mProduct Load (0.3ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  ↳ app/views/products/index.html.erb:17
+  Rendered products/index.html.erb within layouts/application (Duration: 18.3ms | Allocations: 6500)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 55ms (Views: 38.6ms | ActiveRecord: 1.5ms | Allocations: 14974)
+
+
+Started GET "/products" for ::1 at 2020-07-03 21:45:03 +0300
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Processing by ProductsController#index as HTML
+  Rendering products/index.html.erb within layouts/application
+  [1m[36mProduct Load (0.5ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  ↳ app/views/products/index.html.erb:17
+  Rendered products/index.html.erb within layouts/application (Duration: 7.3ms | Allocations: 824)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 17ms (Views: 14.9ms | ActiveRecord: 0.5ms | Allocations: 4543)
+
+
+Started GET "/products/1" for ::1 at 2020-07-03 21:45:08 +0300
+Processing by ProductsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mProduct Load (0.4ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/products_controller.rb:67:in `set_product'
+  Rendering products/show.html.erb within layouts/application
+  Rendered products/show.html.erb within layouts/application (Duration: 3.5ms | Allocations: 316)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 65ms (Views: 24.6ms | ActiveRecord: 0.4ms | Allocations: 7219)
+
+
+Started GET "/products" for ::1 at 2020-07-03 21:45:11 +0300
+Processing by ProductsController#index as HTML
+  Rendering products/index.html.erb within layouts/application
+  [1m[36mProduct Load (0.3ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  ↳ app/views/products/index.html.erb:17
+  Rendered products/index.html.erb within layouts/application (Duration: 3.3ms | Allocations: 806)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 44ms (Views: 41.5ms | ActiveRecord: 0.3ms | Allocations: 4530)
+
+
+  [1m[35m (9.9ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[36mProduct Destroy (124.9ms)[0m  [1m[31mDELETE FROM "products"[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mProduct Create (8.8ms)[0m  [1m[32mINSERT INTO "products" ("title", "description", "image_url", "price", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["title", "Docker for Rails Developers"], ["description", "<p>\n      <em>Build, Ship, and Run Your Applications Everywhere</em>\n      Docker does for DevOps what Rails did for web development—it gives you \n      a new set of superpowers. Gone are “works on my machine” woes and lengthy \n      setup tasks, replaced instead by a simple, consistent, Docker-based \n      development environment that will have your team up and running in seconds. \n      Gain hands-on, real-world experience with a tool that’s rapidly becoming \n      fundamental to software development. Go from zero all the way to production \n      as Docker transforms the massive leap of deploying your app in the cloud \n      into a baby step.\n      </p>"], ["image_url", "ridocker.jpg"], ["price", 38.0], ["created_at", "2020-07-04 18:36:51.422608"], ["updated_at", "2020-07-04 18:36:51.422608"]]
+  [1m[35m (94.4ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mProduct Create (0.8ms)[0m  [1m[32mINSERT INTO "products" ("title", "description", "image_url", "price", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["title", "Build Chatbot Interactions"], ["description", "<p>\n      <em>Responsive, Intuitive Interfaces with Ruby</em>\n      The next step in the evolution of user interfaces is here. \n      Chatbots let your users interact with your service in their\n      own natural language. Use free and open source tools along \n      with Ruby to build creative, useful, and unexpected interactions \n      for users. Take advantage of the Lita framework’s step-by-step \n      implementation strategy to simplify bot development and testing.\n      From novices to experts, chatbots are an area in which everyone \n      can participate. Exercise your creativity by creating chatbot \n      skills for communicating, information, and fun.\n      </p>"], ["image_url", "dpchat.jpg"], ["price", 20.0], ["created_at", "2020-07-04 18:36:51.539373"], ["updated_at", "2020-07-04 18:36:51.539373"]]
+  [1m[35m (97.4ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mProduct Create (0.6ms)[0m  [1m[32mINSERT INTO "products" ("title", "description", "image_url", "price", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["title", "Programming Crystal"], ["description", "<p>\n      <em>Create High-Performance, Safe, Concurrent Apps</em>\n      Crystal is for Ruby programmers who want more performance or for \n      developers who enjoy working in a high-level scripting environment. Crystal \n      combines native execution speed and concurrency with Ruby-like syntax, so \n      you will feel right at home. This book, the first available on Crystal, \n      shows you how to write applications that have the beauty and elegance of a \n      modern language, combined with the power of types and modern concurrency \n      tooling. Now you can write beautiful code that runs faster, scales better, \n      and is a breeze to deploy.\n      </p>"], ["image_url", "crystal.jpg"], ["price", 40.0], ["created_at", "2020-07-04 18:36:51.649608"], ["updated_at", "2020-07-04 18:36:51.649608"]]
+  [1m[35m (87.9ms)[0m  [1m[36mcommit transaction[0m
+Started GET "/" for ::1 at 2020-07-04 21:51:26 +0300
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Rails::WelcomeController#index as HTML
+  Rendering /home/yuriy/.rvm/gems/ruby-2.6.6/gems/railties-6.0.3.2/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /home/yuriy/.rvm/gems/ruby-2.6.6/gems/railties-6.0.3.2/lib/rails/templates/rails/welcome/index.html.erb (Duration: 36.5ms | Allocations: 308)
+Completed 200 OK in 69ms (Views: 42.3ms | ActiveRecord: 0.0ms | Allocations: 2121)
+
+
+Started GET "/products" for ::1 at 2020-07-04 21:51:39 +0300
+Processing by ProductsController#index as HTML
+  Rendering products/index.html.erb within layouts/application
+  [1m[36mProduct Load (0.3ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  ↳ app/views/products/index.html.erb:15
+  Rendered products/index.html.erb within layouts/application (Duration: 534.5ms | Allocations: 20659)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 626ms (Views: 621.5ms | ActiveRecord: 1.2ms | Allocations: 30088)
+
+
+Started GET "/products" for ::1 at 2020-07-04 23:30:06 +0300
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by ProductsController#index as HTML
+  Rendering products/index.html.erb within layouts/application
+  [1m[36mProduct Load (0.3ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  ↳ app/views/products/index.html.erb:15
+  Rendered products/index.html.erb within layouts/application (Duration: 36.4ms | Allocations: 11874)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 59ms (Views: 47.2ms | ActiveRecord: 1.1ms | Allocations: 17974)
+
+
+Started GET "/products/2" for ::1 at 2020-07-04 23:30:09 +0300
+Processing by ProductsController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mProduct Load (0.5ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/products_controller.rb:67:in `set_product'
+  Rendering products/show.html.erb within layouts/application
+  Rendered products/show.html.erb within layouts/application (Duration: 10.6ms | Allocations: 319)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 75ms (Views: 27.3ms | ActiveRecord: 0.5ms | Allocations: 5222)
+
+
