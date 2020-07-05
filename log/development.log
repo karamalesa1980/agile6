@@ -191,3 +191,22 @@ Processing by ProductsController#show as HTML
 Completed 200 OK in 75ms (Views: 27.3ms | ActiveRecord: 0.5ms | Allocations: 5222)
 
 
+Started GET "/" for ::1 at 2020-07-05 10:01:15 +0300
+  [1m[35m (9.9ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Rails::WelcomeController#index as HTML
+  Rendering /home/yuriy/.rvm/gems/ruby-2.6.6/gems/railties-6.0.3.2/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /home/yuriy/.rvm/gems/ruby-2.6.6/gems/railties-6.0.3.2/lib/rails/templates/rails/welcome/index.html.erb (Duration: 37.0ms | Allocations: 308)
+Completed 200 OK in 94ms (Views: 43.2ms | ActiveRecord: 0.0ms | Allocations: 2111)
+
+
+Started GET "/products" for ::1 at 2020-07-05 10:01:26 +0300
+Processing by ProductsController#index as HTML
+  Rendering products/index.html.erb within layouts/application
+  [1m[36mProduct Load (39.5ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  ↳ app/views/products/index.html.erb:15
+  Rendered products/index.html.erb within layouts/application (Duration: 430.5ms | Allocations: 11760)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 566ms (Views: 508.9ms | ActiveRecord: 40.6ms | Allocations: 17041)
+
+
