@@ -31,6 +31,7 @@ class ProductsController < ApplicationController
         format.html { redirect_to @product, notice: 'Product was successfully created.' }
         format.json { render :show, status: :created, location: @product }
       else
+        puts @product.errors.full_messages # печатает ошибку проверки в консоле
         format.html { render :new }
         format.json { render json: @product.errors, status: :unprocessable_entity }
       end
